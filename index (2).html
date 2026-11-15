@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus Records – Student Information System Prototype</title>
+    <meta name="description" content="A small Student Information System prototype deployed with GitHub and Netlify or Vercel.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip" href="#students">Skip to student list</a>
+
+    <header class="site-header">
+        <a class="brand" href="#top">Campus Records</a>
+        <nav aria-label="Main">
+            <a href="#students">Students</a>
+            <a href="#add">Add student</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <h1>Every student record, one clear list.</h1>
+            <p>A prototype Student Information System. Search enrolled students, add new ones, and remove records that are no longer needed.</p>
+            <a class="button" href="#students">Open student list</a>
+        </section>
+
+        <section class="stats" aria-label="Summary">
+            <div class="stat">
+                <span class="stat-value" id="stat-total">0</span>
+                <span class="stat-label">Total students</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="stat-active">0</span>
+                <span class="stat-label">Currently enrolled</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="stat-courses">0</span>
+                <span class="stat-label">Courses represented</span>
+            </div>
+        </section>
+
+        <section id="students" class="panel">
+            <div class="panel-head">
+                <h2>Student list</h2>
+                <label class="search">
+                    <span class="visually-hidden">Search students</span>
+                    <input type="search" id="search" placeholder="Search by name, ID or course" autocomplete="off">
+                </label>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Student ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Course</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Status</th>
+                            <th scope="col"><span class="visually-hidden">Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-rows"></tbody>
+                </table>
+            </div>
+            <p id="empty" class="empty" hidden>No students match your search. Clear the search box to see everyone.</p>
+        </section>
+
+        <section id="add" class="panel">
+            <h2>Add a student</h2>
+            <form id="student-form" novalidate>
+                <div class="field">
+                    <label for="f-id">Student ID</label>
+                    <input id="f-id" name="id" type="text" placeholder="2026-0107" required>
+                    <small class="error" id="e-id"></small>
+                </div>
+                <div class="field">
+                    <label for="f-name">Full name</label>
+                    <input id="f-name" name="name" type="text" placeholder="Juan Dela Cruz" required>
+                    <small class="error" id="e-name"></small>
+                </div>
+                <div class="field">
+                    <label for="f-course">Course</label>
+                    <select id="f-course" name="course" required>
+                        <option value="">Choose a course</option>
+                        <option>BS Information Technology</option>
+                        <option>BS Computer Science</option>
+                        <option>BS Information Systems</option>
+                        <option>BS Entertainment and Multimedia Computing</option>
+                    </select>
+                    <small class="error" id="e-course"></small>
+                </div>
+                <div class="field">
+                    <label for="f-year">Year level</label>
+                    <select id="f-year" name="year" required>
+                        <option value="">Choose a year</option>
+                        <option value="1">1st year</option>
+                        <option value="2">2nd year</option>
+                        <option value="3">3rd year</option>
+                        <option value="4">4th year</option>
+                    </select>
+                    <small class="error" id="e-year"></small>
+                </div>
+                <div class="field">
+                    <label for="f-status">Status</label>
+                    <select id="f-status" name="status">
+                        <option>Enrolled</option>
+                        <option>On leave</option>
+                        <option>Graduated</option>
+                    </select>
+                </div>
+                <button class="button" type="submit">Save student</button>
+                <p id="form-message" class="form-message" role="status"></p>
+            </form>
+        </section>
+
+        <section id="about" class="panel about">
+            <h2>About this prototype</h2>
+            <p>Built for Platform Technologies Week 15. The source lives in a GitHub repository, and every commit to the main branch is built and published automatically by Netlify or Vercel. Records are stored in your own browser, so nothing you enter leaves your device.</p>
+            <p><a href="https://github.com" rel="noopener">GitHub</a> · <a href="https://www.netlify.com" rel="noopener">Netlify</a> · <a href="https://vercel.com" rel="noopener">Vercel</a></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Campus Records prototype · Version 1.0</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
